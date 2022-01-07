@@ -12,6 +12,11 @@ resources:
 
 # Patch upstream manifests to explicitly disable 'preserveUnknownFields',
 # otherwise upgrade with 'kubectl apply' fails.
+configMapGenerator:
+- behavior: merge
+  envs:
+  - params_0.env
+  name: cert-manager-parameters
 patches:
 - path: patches/crd-preserve-unknown-fields.yaml
   target:
